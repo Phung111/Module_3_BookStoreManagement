@@ -4,22 +4,33 @@ import java.util.Date;
 
 public class Customer{
     private long id;
+    private String image;
     private String name;
     private String email;
+    private String password;
     private String address;
     private Date createdAt;
-    private String image;
 
     public Customer() {
     }
 
-    public Customer(long id, String name, String email, String address, Date createdAt, String image) {
+    public Customer(long id, String image, String name, String email, String password, String address, Date createdAt) {
         this.id = id;
+        this.image = image;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.createdAt = createdAt;
+    }
+
+    public Customer(long id, String image, String name, String email, String address, Date createdAt) {
+        this.id = id;
+        this.image = image;
         this.name = name;
         this.email = email;
         this.address = address;
         this.createdAt = createdAt;
-        this.image = image;
     }
 
     public long getId() {
@@ -28,6 +39,14 @@ public class Customer{
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getName() {
@@ -46,6 +65,14 @@ public class Customer{
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -60,13 +87,5 @@ public class Customer{
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 }

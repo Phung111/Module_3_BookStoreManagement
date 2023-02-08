@@ -4,13 +4,18 @@ import model.Customer;
 import service.inmemory.CustomerService;
 import service.ICustomerService;
 
+import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.image.BufferedImage;
+import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
@@ -108,8 +113,8 @@ public class CustomerServlet extends HttpServlet {
         Date createAt = new Date();
 
 
-//        Customer(Long id, String name, String email, String address, Date createdAt, String image)
-        Customer customer = new Customer(id, name, email, address, createAt, null);
+        //Customer(long id, String name, String image, String email, String password, String address, Date createdAt)
+        Customer customer = new Customer(id, null, name, email, address, createAt);
         iCustomerService.addCustomer(customer);
         RequestDispatcher dispatcher = request.getRequestDispatcher("customer/create.jsp");
         request.setAttribute("message", "New customer was created");
