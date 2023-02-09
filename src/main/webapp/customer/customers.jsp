@@ -13,7 +13,7 @@
     <link href="/assets/css/pace.min.css" rel="stylesheet"/>
     <script src="/assets/js/pace.min.js"></script>
     <!--favicon-->
-    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/images/pngegg.png" type="image/x-icon">
     <!-- Vector CSS -->
     <link href="/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
     <!-- simplebar CSS-->
@@ -29,11 +29,13 @@
     <!-- Custom Style-->
     <link href="/assets/css/app-style.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.1/sweetalert2.css" integrity="sha512-JzSVRb7c802/njMbV97pjo1wuJAE/6v9CvthGTDxiaZij/TFpPQmQPTcdXyUVucsvLtJBT6YwRb5LhVxX3pQHQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.1/sweetalert2.min.js" integrity="sha512-vCI1Ba/Ob39YYPiWruLs4uHSA3QzxgHBcJNfFMRMJr832nT/2FBrwmMGQMwlD6Z/rAIIwZFX8vJJWDj7odXMaw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
 
-<%--<body class="bg-theme bg-theme1">--%>
-<body>
+<body class="bg-theme bg-theme1">
+<%--<body>--%>
 
 <!-- Start wrapper-->
 <div id="wrapper">
@@ -329,25 +331,36 @@
             <%--                </div>--%>
             <%--            </div><!--End Row-->--%>
 
+            <c:if test="${requestScope.delete == 'success'}">
+                <script>
+                    window.onload = ()=>{
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                </script>
+            </c:if>
             <div class="row">
                 <div class="col-12 col-lg-12">
                     <div class="card">
-                        <div class="card-header">Recent Order Tables
-                            <div class="card-action">
-                                <div class="dropdown">
-                                    <a href="" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
-                                        <i class="icon-options"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="">Action</a>
-                                        <a class="dropdown-item" href="">Another action</a>
-                                        <a class="dropdown-item" href="">Something else here</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="">Separated link</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<%--                        <div class="card-header">Recent Order Tables--%>
+<%--                            <div class="card-action">--%>
+<%--                                <div class="dropdown">--%>
+<%--                                    <a href="" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">--%>
+<%--                                        <i class="icon-options"></i>--%>
+<%--                                    </a>--%>
+<%--                                    <div class="dropdown-menu dropdown-menu-right">--%>
+<%--                                        <a class="dropdown-item" href="">Action</a>--%>
+<%--                                        <a class="dropdown-item" href="">Another action</a>--%>
+<%--                                        <a class="dropdown-item" href="">Something else here</a>--%>
+<%--                                        <div class="dropdown-divider"></div>--%>
+<%--                                        <a class="dropdown-item" href="">Separated link</a>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                         <div class="table-responsive">
                             <table class="table align-items-center table-flush table-borderless">
                                 <thead>
@@ -357,7 +370,7 @@
                                     <th>Email</th>
                                     <th>Địa chỉ</th>
                                     <th>Loại khách hàng</th>
-                                    <th>Hành động</th>
+                                    <th style="text-align: center">Hành động</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -375,7 +388,7 @@
                                                 </c:if>
                                             </c:forEach>
                                         </td>
-                                        <td>
+                                        <td style="text-align: center">
                                             <a><i class="fa-regular fa-pen-to-square" ></i></a>
                                             <a onclick="handleDeleteClick(${c.getId()})"><i class="fa-regular fa-trash-can" ></i></a>
                                         </td>
@@ -385,10 +398,64 @@
                                     </tr>
                                 </c:forEach>
                                 </tbody></table>
+                            <form id="frmDelete" method="post" action="/customers?action=delete">
+                                <input type="hidden" name="idDelete" value="" id="idDelete">
+                            </form>
                         </div>
                     </div>
                 </div>
             </div><!--End Row-->
+
+            <%--      Create Form      --%>
+            <div class="row mt-3">
+            <div class="col-lg-6" >
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">Thêm khác hàng mới</div>
+<%--                        Customer(long id, String image, String name, String email, String password, String address, Date createdAt, long idType)--%>
+                        <hr>
+                        <form>
+                            <div class="form-group">
+                                <label for="input-6">Tên</label>
+                                <input type="text" class="form-control form-control-rounded" id="input-6" placeholder="Nhập tên">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-7">Email</label>
+                                <input type="text" class="form-control form-control-rounded" id="input-7" placeholder="Nhập email">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-8">Mật khẩu</label>
+                                <input type="text" class="form-control form-control-rounded" id="input-8" placeholder="Nhập mật khẩu">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-9">Địa chỉ</label>
+                                <input type="text" class="form-control form-control-rounded" id="input-9" placeholder="Nhập địa chỉ">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-10">Ngày</label><br>
+                                <input id="input-10" class="col-9 form-control form-control-rounded" type="date" name="createdAt" value='<fmt:formatDate pattern = "yyyy-MM-dd"
+                                            value = "${requestScope.customer.getCreatedAt()}" />' >
+                            </div>
+                            <div class="form-group">
+                                <label for="input-11">Loại khách hàng</label><br>
+                                <select class="form-control form-control-rounded" id="input-11">
+                                    <option value="1">VIP</option>
+                                    <option value="2">SUPERVIP</option>
+                                    <option value="3">NORMAL</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-light btn-round px-5">Xác nhận</button>
+                                <button type="submit" class="btn btn-light btn-round px-5">Hủy</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+                <div class="avatar-customer col-lg-6" style="display: flex; top: 72px">
+                    <img id="noavatar-customer" class="form-control-rounded" src="/assets/images/noavatar.jpg" alt="" style="width: 200px;height: 200px">
+                </div>
+            </div>
 
             <!--End Dashboard Content-->
 
@@ -415,41 +482,41 @@
     <!--End footer-->
 
     <!--start color switcher-->
-    <div class="right-sidebar">
-        <div class="switcher-icon">
-            <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
-        </div>
-        <div class="right-sidebar-content">
+<%--    <div class="right-sidebar">--%>
+<%--        <div class="switcher-icon">--%>
+<%--            <i class="zmdi zmdi-settings zmdi-hc-spin"></i>--%>
+<%--        </div>--%>
+<%--        <div class="right-sidebar-content">--%>
 
-            <p class="mb-0">Gaussion Texture</p>
-            <hr>
+<%--            <p class="mb-0">Gaussion Texture</p>--%>
+<%--            <hr>--%>
 
-            <ul class="switcher">
-                <li id="theme1"></li>
-                <li id="theme2"></li>
-                <li id="theme3"></li>
-                <li id="theme4"></li>
-                <li id="theme5"></li>
-                <li id="theme6"></li>
-            </ul>
+<%--            <ul class="switcher">--%>
+<%--                <li id="theme1"></li>--%>
+<%--                <li id="theme2"></li>--%>
+<%--                <li id="theme3"></li>--%>
+<%--                <li id="theme4"></li>--%>
+<%--                <li id="theme5"></li>--%>
+<%--                <li id="theme6"></li>--%>
+<%--            </ul>--%>
 
-            <p class="mb-0">Gradient Background</p>
-            <hr>
+<%--            <p class="mb-0">Gradient Background</p>--%>
+<%--            <hr>--%>
 
-            <ul class="switcher">
-                <li id="theme7"></li>
-                <li id="theme8"></li>
-                <li id="theme9"></li>
-                <li id="theme10"></li>
-                <li id="theme11"></li>
-                <li id="theme12"></li>
-                <li id="theme13"></li>
-                <li id="theme14"></li>
-                <li id="theme15"></li>
-            </ul>
+<%--            <ul class="switcher">--%>
+<%--                <li id="theme7"></li>--%>
+<%--                <li id="theme8"></li>--%>
+<%--                <li id="theme9"></li>--%>
+<%--                <li id="theme10"></li>--%>
+<%--                <li id="theme11"></li>--%>
+<%--                <li id="theme12"></li>--%>
+<%--                <li id="theme13"></li>--%>
+<%--                <li id="theme14"></li>--%>
+<%--                <li id="theme15"></li>--%>
+<%--            </ul>--%>
 
-        </div>
-    </div>
+<%--        </div>--%>
+<%--    </div>--%>
     <!--end color switcher-->
 
 </div><!--End wrapper-->
@@ -473,6 +540,32 @@
 
 <!-- Index js -->
 <script src="/assets/js/index.js"></script>
+
+<%-- My script--%>
+<script>
+    function handleDeleteClick(idCustomer) {
+        document.getElementById("idDelete").value = idCustomer;
+        Swal.fire({
+            title: 'Are you sure delete?',
+            // text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById("frmDelete").submit();
+                // Swal.fire(
+                //     'Deleted!',
+                //     'Your file has been deleted.',
+                //     'success'
+                // )
+            }
+        })
+        return false;
+    }
+</script>
 
 
 </body>

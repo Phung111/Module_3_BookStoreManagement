@@ -10,11 +10,12 @@ public class Customer{
     private String password;
     private String address;
     private Date createdAt;
+    private long idType;
 
     public Customer() {
     }
 
-    public Customer(long id, String image, String name, String email, String password, String address, Date createdAt) {
+    public Customer(long id, String image, String name, String email, String password, String address, Date createdAt, long idType) {
         this.id = id;
         this.image = image;
         this.name = name;
@@ -22,6 +23,7 @@ public class Customer{
         this.password = password;
         this.address = address;
         this.createdAt = createdAt;
+        this.idType = idType;
     }
 
     public Customer(long id, String image, String name, String email, String address, Date createdAt) {
@@ -87,5 +89,13 @@ public class Customer{
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public long getIdType() {
+        return idType;
+    }
+
+    public void setIdType(long idType) {
+        this.idType = idType;
     }
 }

@@ -14,11 +14,11 @@ public class CustomerService implements ICustomerService {
     public CustomerService() {
         customers = new ArrayList<>();
 
-//      Customer(long id, String image, String name, String email, String password, String address, Date createdAt)
-        customers.add(new Customer(0,null, "Quang Dang","quangdang@gmail.com","12346","28 NTP", new Date()));
-        customers.add(new Customer(1,null, "Huu Nghia","quangdang@gmail.com","12346","28 NTP", new Date()));
-        customers.add(new Customer(2,null, "Thanh Nhan","quangdang@gmail.com","12346","28 NTP", new Date()));
-        customers.add(new Customer(3,null, "Bich Thuy","quangdang@gmail.com","12346","28 NTP", new Date()));
+//      Customer(long id, String image, String name, String email, String password, String address, Date createdAt, idType)
+        customers.add(new Customer(0,null, "Quang Dang","quangdang@gmail.com","12346","28 NTP", new Date(),1));
+        customers.add(new Customer(1,null, "Huu Nghia","quangdang@gmail.com","12346","28 NTP", new Date(),2));
+        customers.add(new Customer(2,null, "Thanh Nhan","quangdang@gmail.com","12346","28 NTP", new Date(),3));
+        customers.add(new Customer(3,null, "Bich Thuy","quangdang@gmail.com","12346","28 NTP", new Date(),1));
     }
 
     @Override
