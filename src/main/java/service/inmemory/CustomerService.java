@@ -37,7 +37,8 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    //Customer(Long id, String name, String email, String address, Date createdAt, String image)
+    //Customer(long id, String image, String name, String email,
+    // String password, String address, Date createdAt, long idType)
     public void editCustomer(Customer customer) {
         for (int i = 0; i < customers.size(); i++) {
             if (customers.get(i).getId() == customer.getId()) {
@@ -60,7 +61,20 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void addCustomer(Customer customer) {
+    public void createCustomer(Customer customer) {
+        customer.setId((long) (customers.size()+1));
         customers.add(customer);
     }
+
+    @Override
+    public boolean checkImageExists(String image) {
+        return false;
+    }
+
+    @Override
+    public Customer findCustomerByEmail(String email) {
+        return null;
+    }
+
+
 }

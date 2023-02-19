@@ -1,0 +1,184 @@
+/*Edit form*/
+.edit-background{
+    position: fixed !important;
+    background-color: rgba(0,0,0,0.7);
+    /*background-color: blue;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    z-index: 100000;
+}
+.edit-form{
+    background-color: #2a2a2a;
+    width: 40vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.edit-content{
+    width: 33vw;
+    height: 100vh;
+}
+
+.edit-head{
+    text-align: center;
+}
+
+/*end Edit form*/
+
+/*button*/
+.btn, .fa-regular:hover {
+    color: #242483;
+    cursor: pointer;
+}
+
+/*Ngoài lề*/
+.bookname {
+    max-width: 300px;
+    vertical-align: center;
+    line-break: auto;
+
+}
+
+.bookname>a{
+    white-space: break-spaces;
+}
+/*End Ngoài lề*/
+
+.table-responsive{
+    overflow-y: auto;
+}
+
+/*Display book*/
+:root{
+    --xanh-damnhat: rgb(129, 185, 255);
+    --xanh-dam: rgb(165, 182, 255);
+    --xanh-nhat: rgb(137,207,240);
+    --xanh-nhatnhat: rgb(231,238,248);
+
+
+}
+
+.book-bg1{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.book-bg2{
+    /*
+        225     : 17.3  %
+        320     : 24.6  %
+        290     : 22.3  %
+         50     :  3.8  %
+         25     :  1.9  %
+         15     :  1.15 %
+         12.5   :  0.95 %
+         10     :  0.76 %
+          5     :  0.38 %
+    */
+    /*width: 17.3%;*/
+    /*height: 320px;*/
+    width: 21.1%;
+    height: 24.6%;
+    /*max-height: 640px;*/
+    background-color: var(--xanh-nhat);
+    border-radius: 20px;
+    margin: 1.9%; /* 50 */
+    padding: 0.75%;
+    border: 2px var(--xanh-nhat) solid;
+    background: none;
+}
+.book-bg2:hover{
+    background-color: var(--xanh-damnhat);
+}
+
+.book-img{
+    width: 100%;
+    height: 45vh;
+    border-radius: 20px;
+}
+
+.book-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.book-text{
+    margin-top: 5px;
+    text-align: center;
+    color: white;
+}
+
+.book-name{
+    font-weight: 900;
+}
+
+.book-price{
+    color: #d5d5d5;
+}
+
+.book-price{
+    margin-top: 7.5px;
+}
+
+.book-avaiable-quantity{
+    margin-top: 7.5px;
+    display: flex;
+}
+
+.book-quantity{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-quantity i{
+    font-size: 30px;
+    color: var(--xanh-nhat);
+}
+
+.book-type{
+    width: 60%;
+    border-radius: 5px;
+    background-color: #ffffa4;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px var(--xanh-nhat) solid;
+    background: none;
+}
+
+.book-avaiable{
+    width: 20%;
+    background-color: var(--xanh-dam);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px var(--xanh-nhat) solid;
+    background: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*End Display book*/
+
+
+

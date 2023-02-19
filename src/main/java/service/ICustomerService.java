@@ -10,6 +10,9 @@ public interface ICustomerService {
     Customer findCustomerById(long id);
     void editCustomer(Customer customer);
     void deleteCustomerById(long id);
-    void addCustomer(Customer customer);
+    void createCustomer(Customer customer);
+    boolean checkImageExists(String image);
+    Customer findCustomerByEmail(String email);
+
 }
 
